@@ -1,0 +1,17 @@
+epochs: 5
+batch_size: 40
+concat: true
+finetune: false
+freeze_vgg: true
+save_model: true
+coeff_count: 40
+device: cuda:0
+pretrained_model_dir: ./model.pth
+resnet_model_dir: ../resnet50_ft_dims_2048.pth
+seed: 32
+lr: 0.0001
+patience: 5
+step_size: 5
+gamma: 0.5
+data_dirs:
+  - ./
