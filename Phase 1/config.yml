@@ -1,17 +1,20 @@
-epochs: 5
+epochs: 100
 batch_size: 40
 concat: true
-finetune: false
+background: false #for phase 2 also add jitter in dataset file
+finetune: true
 freeze_vgg: true
-save_model: true
+# save_model: false
 coeff_count: 40
-device: cuda:0
-pretrained_model_dir: ./model.pth
-resnet_model_dir: ../resnet50_ft_dims_2048.pth
+device: cuda:1
+pretrained_model_dir: ./samepose-ft-sameface-ft-front1.pth
+resnet_model_dir: ../new-data/resnet50_ft_dims_2048.pth
 seed: 32
 lr: 0.0001
 patience: 5
 step_size: 5
 gamma: 0.5
 data_dirs:
-  - ./
+  - ../morphed_faces/g051151-3dmm-1634253002/samepose #_background
+  - ../morphed_faces/g051151-3dmm-1634253002/front1
+  - ../morphed_faces/g051151-3dmm-1634253002/sameface

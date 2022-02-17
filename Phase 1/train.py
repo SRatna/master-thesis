@@ -18,6 +18,8 @@ if __name__ == '__main__':
 
     if args.concat:
         path = 'all'
+        if args.background:
+            path += '-background'
     else:
         path = args.data_dirs[0].split("/")[-1]
 
@@ -37,10 +39,11 @@ if __name__ == '__main__':
     if args.finetune:
         state_dict = torch.load(args.pretrained_model_dir)
         model_branched.load_state_dict(state_dict)
-        path += '-ft-' + args.pretrained_model_dir.replace('.pth', '')
+        path += '-ft-' + args.pretrained_model_dir.split('/')[-1].replace('.pth', '')
+        telegram_logger(f'{args.pretrained_model_dir} loaded; new path: {path}')
     model_branched = model_branched.to(device)
-    model, loss = train(model_branched, dataloaders, dataset_sizes, args)
     telegram_logger(path)
+    model, loss = train(model_branched, dataloaders, dataset_sizes, args)
     torch.save(model.state_dict(), f'{path}.pth')
     save_loss_fig(loss, path)
     # save loss as pickle
@@ -48,7 +51,7 @@ if __name__ == '__main__':
     with open(f'{path}-output.pickle', "wb") as output_file:
         output = {
             'train_val_loss': loss,
-            'args': args,
+            'args': json.dumps(args),
             'test_loss': test_loss
         }
         pickle.dump(output, output_file)

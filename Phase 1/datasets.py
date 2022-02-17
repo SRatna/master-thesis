@@ -28,7 +28,7 @@ class TrainSet(Dataset):
 #                             transforms.CenterCrop(224),
 #                             transforms.RandomHorizontalFlip(), # randomly flip and rotate
 #                             transforms.RandomRotation(10),
-#                             transforms.ColorJitter(brightness=0.25, contrast=0.25, saturation=0.5, hue=0.15),
+                            # transforms.ColorJitter(brightness=0.25, contrast=0.25, saturation=0.5, hue=0.15),
                             transforms.ToTensor(),
                             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
                         ])
@@ -37,7 +37,7 @@ class TrainSet(Dataset):
         return len(self.labels)
     
     def __getitem__(self, idx):
-        image = Image.open(self.path + 'img' + str(idx).zfill(6) + '.png')
+        image = Image.open(self.path + 'img' + str(idx).zfill(4) + '.png')
         image = image.convert('RGB')
         label = self.labels[idx]
         return self.transform(image), label
@@ -73,7 +73,7 @@ class TestSet(Dataset):
     
     def __getitem__(self, idx):
         idx = self.offset + idx
-        image_path = self.path + 'img' + str(idx).zfill(6) + '.png'
+        image_path = self.path + 'img' + str(idx).zfill(4) + '.png'
         image = Image.open(image_path)
         image = image.convert('RGB')
         label = self.labels[idx]

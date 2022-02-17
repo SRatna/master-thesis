@@ -1,7 +1,10 @@
-*/*.png
-*/*.jpg
-*/*.pth
+**/*.png
+**/*.jpg
+**/*.pth
+**/*.eps
 */*.pickle
 __pycache__/
 */__pycache__/
 *.sh
+*/*.sh
+*/.ipynb_checkpoints/
