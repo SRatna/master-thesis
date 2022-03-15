@@ -1,1 +1,1 @@
-## With small datasets
+## With small datasets and brightness, color and background
