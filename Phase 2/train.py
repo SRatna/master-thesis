@@ -1,6 +1,7 @@
 import torch
 import pickle
 import argparse
+import json
 from utils import *
 import torch.nn as nn
 import resnet50_ft_dims_2048 as resnet50_model
@@ -59,13 +60,19 @@ if __name__ == '__main__':
         path += '-ft'
     model_branched = model_branched.to(device)
     model, loss = train(model_branched, dataloaders, dataset_sizes, args)
+    path += f'-lr-{args.lr}'
     print(path)
     torch.save(model.state_dict(), f'{path}-model.pth')
     save_loss_fig(loss, path)
+    test_loss = print_test_loss(model, args.data_dir, args.coeff_count, args.device)
     # save loss as pickle
     with open(f'{path}-loss.pickle', "wb") as output_file:
-        pickle.dump(loss, output_file)
-    print_test_loss(model, args.data_dir, args.coeff_count, args.device)
+        output = {
+            'train_val_loss': loss,
+            'args': json.dumps(args),
+            'test_loss': test_loss
+        }
+        pickle.dump(output, output_file)
     print('done')
 
 

@@ -35,7 +35,7 @@ def get_data_loaders(batch_size, data_dir, coeff_count):
     # number of subprocesses to use for data loading
     num_workers = 8
     # percentage of training set to use as validation
-    valid_size = 0.15
+    valid_size = 0.10
     train_data = TrainSet(f'{data_dir}/', coeff_count)
     telegram_logger(data_dir)
     # obtain training indices that will be used for validation
@@ -203,9 +203,21 @@ def print_test_loss(model, data_dir, coeff_count, device):
             texture_coeff_loss += (p_texture_coeff -
                                    texture_coeff).pow(2).mean().item()
 
-    telegram_logger(f'theta loss: {theta_loss / len(test_loader)}')
-    telegram_logger(f'phi loss: {phi_loss / len(test_loader)}')
-    telegram_logger(f'shape coeff loss: {shape_coeff_loss / len(test_loader)}')
+    theta_loss /= len(test_loader)
+    phi_loss /= len(test_loader)
+    shape_coeff_loss /= len(test_loader)
+    texture_coeff_loss /= len(test_loader)
+
+    telegram_logger(f'theta loss: {theta_loss}')
+    telegram_logger(f'phi loss: {phi_loss}')
+    telegram_logger(f'shape coeff loss: {shape_coeff_loss}')
     telegram_logger(
-        f'texture coeff loss: {texture_coeff_loss / len(test_loader)}')
+        f'texture coeff loss: {texture_coeff_loss}')
+    
+    return {
+        'theta': theta_loss,
+        'phi': phi_loss,
+        'shape': shape_coeff_loss,
+        'texture': texture_coeff_loss,
+    }
 
