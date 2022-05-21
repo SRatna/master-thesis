@@ -1,0 +1,96 @@
+supervise: true
+optim: adam #sgd or adam
+freeze: true
+freeze_cam_params: true
+freeze_shade: false
+normalize: false
+epochs: 1
+round: 1
+batch_size: 24
+data: ffhq
+loss: cosine_1 # photo_loss_cosine_0.1 cosine_photo_loss_0.5
+lr: 0.00001
+pllr: 0.000001
+cam_params: 5
+n_vertices: 53149 # 53149 28588
+cam_distance: 1000 #700
+fov: 15 #12.5(celeba-hq: bit big face)/17.5/20
+constant_fov: true
+constant_pp: true
+constant_pose: false
+val_split: 0
+save_model: true
+per_layer_lr: false # less lr to shade
+use_mask: false # not relevant for photo_loss but for cosine and other losses
+coeff_count: 80
+exp_count: 20
+device: cuda:0
+
+# data_dir: ../data/masked_celeba/
+# data_dir: ../data/masked-celeba-hq-fixed-missing/
+# data_dir: ../data/ffhq/
+# data_dir: ../data/ffhq-all/
+data_dir: /work/ws-tmp/g051151-3dmm/ffhq-all/
+# data_dir: /work/ws-tmp/g051151-sfsnet/g051151-sfsnet-1640909401/g051151-sfsnet-1633129803/masked-celeba-hq/
+# data_dir: /work/ws-tmp/g051151-sfsnet/g051151-sfsnet-1640909401/g051151-sfsnet-1633129803/masked_celeba/
+#data_dir: /work/ws-tmp/g051151-bfm/g051151-bfm-1640650205/g051151-bfm-1637971803/output-100000-1-120pc-center-front-poses-albedo-2017/
+# data_dir: /work/ws-tmp/g051151-sfsnet/g051151-sfsnet-1640909401/g051151-sfsnet-1633129803/DATA_pose_15/
+# data_dir: /work/ws-tmp/g051151-bfm/g051151-bfm-1640650205/g051151-bfm-1637971803/output-40000-5-120pc-center-background-front-poses-2017/
+
+# bfm_dir: ../BFM-generator/data/bfm2017/model2017-1_bfm_nomouth.h5
+bfm_dir: /home/g051151/bfm2017/model2017-1_bfm_nomouth.h5
+# bfm_dir: /home/g051151/bfm2017/model2017-1_face12_nomouth.h5
+# bfm_dir: /home/osho/Documents/Projects/Uni-Siegen/Thesis/BFM-generator/data/bfm2017/model2017-1_bfm_nomouth.h5
+
+# model_dir: ./model.pth
+# model_dir: ../../cuke-bfm-all-camera-params/outs/output-10k-20-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/sadhikari/bfm-data/code-all-params/outs/output-40k-5-80pc-20e-landmark-no-background_output-20k-10-80pc-20e-landmark-no-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.5-train-mse-loss/model.pth
+# model_dir: /home/sadhikari/bfm-data/code-all-params/outs/output-5k-40-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/sadhikari/bfm-data/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.5-train-mse-loss-5-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-5-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-2-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background_output-4k-100-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background_output-4k-100-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background_output-4k-100-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-20k-10-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-40k-5-80pc-20e-landmark-no-background_output-20k-10-80pc-20e-landmark-no-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.5-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-40k-5-80pc-20e-landmark-no-background_output-20k-10-80pc-20e-landmark-no-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-2-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-40k-5-80pc-20e-landmark-no-background_output-20k-10-80pc-20e-landmark-no-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.5-train-mse-loss-2-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-4k-100-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-10k-20-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+
+#new ones
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-10k-20-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.5-train-mse-loss-5-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.25-train-mse-loss-5-cam-params/model.pth
+
+model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.25-train-mse-loss-5-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.5-train-mse-loss-5-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-5-cam-params/model.pth
+
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-10k-20-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.25-train-mse-loss-5-cam-params/model.pth
+
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-20k-10-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.9-train-0.2-val-mse-loss-5-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-20k-10-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.5-train-mse-loss-5-cam-params/model.pth
+# model_dir: /home/g051151/bfm/code-all-params/outs/output-20k-10-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+
+# parent_model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-5-cam-params/model.pth
+# parent_model_dir: /home/g051151/bfm/code-all-params/outs/output-10k-20-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# parent_model_dir: /home/g051151/bfm/code-all-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background_output-4k-100-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# parent_model_dir: outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-5-cam-params/ffhq-all/supervised/cosine_1/adam-1e-06-ep-2-frozen-True-cfov-True-cpp-True-mask-False-pllr-True-round-1-pllr-1e-06/model.pth
+parent_type: finetuned # or supervised with ffhq
+load_parent: false #only on finetuned parent_type
+# resnet_model_dir: ../new-data/resnet50_ft_dims_2048.pth
+resnet_model_dir: ../resnet50_ft_dims_2048.pth
+seed: 32
+step_size: 10
+gamma: 0.8
+
+# for eval
+model_cam_shade: outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-5-cam-params/ffhq-all/supervised/cosine_1/adam-1e-06-ep-2-frozen-True-cfov-True-cpp-True-mask-False-pllr-True-round-1-pllr-1e-06/model.pth
+# model_face: outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.25-train-mse-loss-5-cam-params/ffhq-all/supervised/cosine_1/adam-1e-05-ep-2-pllr-1e-06-resnet-frozen-cfov-cpp-used-2-models-round-3/model.pth
+model_face: outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.25-train-mse-loss-5-cam-params/ffhq-all/supervised/cosine_1/adam-1e-05-ep-6-pllr-1e-06-resnet-frozen-cfov-cpp-cam-params-frozen-finetuned-parent-round-2/model.pth
