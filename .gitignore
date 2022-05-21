@@ -1,7 +1,8 @@
+**/*.pdf
+**/*.pth
 **/*.png
 **/*.pickle
 **/*.jpg
-**/*.pth
 **/*.eps
 */*.pickle
 __pycache__/
