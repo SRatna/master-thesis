@@ -1,0 +1,34 @@
+batch_size: 1
+cam_params: 5 # 2 rotation 2 pp 1 fov
+cam_distance: 1000
+fov: 12.5
+constant_pose: false
+constant_fov: true
+constant_pp: true # no pp incase of bfm-code-new
+constant_shade: false
+exp_off: false
+coeff_count: 80
+exp_count: 20 # for bfm-code-new 10 others 20
+device: cuda:0
+n_vertices: 53149 # 53149 28588
+bfm_dir: ../../BFM-generator/data/bfm2017/model2017-1_bfm_nomouth.h5
+# bfm_dir: /home/osho/Documents/Projects/Uni-Siegen/Thesis/BFM-generator/data/bfm2017/model2017-1_face12_nomouth.h5
+# model_dir: ../../cuke-new/outs/output-40000-10-80pc-10exp-background-2017/seperate-all-losses-80-pc-10-exp-0.0001-lr-1-train/model.pth
+# model_dir: ../../cuke-new/outs/output-50000-4-80pc-10exp-simple-poses-background-2017_output-50000-4-80pc-10exp-simple-poses-background-2017-new_output-40000-5-80pc-simple-poses-background-2017_output-40000-10-80pc-10exp-background-2017/seperate-all-losses-80-pc-10-exp-0.0001-lr-1-train-mse-loss/model.pth
+# model_dir_2: ../../omni/semi-supervised-bfm/masked_celeba-5e-05-l1-celeba-5-model.pth
+# model_dir_2: ../../omni/semi-supervised-bfm/masked-celeba-hq-1e-05-l1-celeba-6-model.pth
+# model_dir: ../../omni/camera-all-semi-supervised-bfm/masked-celeba-hq-adam-1e-06-mse-celeba-ep-10-frozen-True-cfov-True-plr-False-model.pth
+# model_dir_2: ../../cuke-bfm-all-camera-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background_output-4k-100-80pc-20e-landmark-background_output-20k-10-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+# model_dir: ../../cuke-bfm-all-camera-params/outs/output-5k-40-80pc-20e-landmark-background_output-10k-20-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss/model.pth
+
+# for mix model eval
+model_cam_shade: ../camera-all-semi-supervised-bfm/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-5-cam-params/ffhq-all/supervised/cosine_1/adam-1e-06-ep-6-resnet-frozen-cfov-cpp-round-1/model.pth
+# model_cam_shade: ../camera-all-semi-supervised-bfm/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-1-train-mse-loss-5-cam-params/ffhq-all/supervised/cosine_1/adam-1e-06-ep-2-frozen-True-cfov-True-cpp-True-mask-False-pllr-True-round-1-pllr-1e-06/model.pth
+# model_face: ../camera-all-semi-supervised-bfm/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.25-train-mse-loss-5-cam-params/ffhq-all/supervised/cosine_1/adam-1e-05-ep-2-pllr-1e-06-resnet-frozen-cfov-cpp-used-2-models-round-3/model.pth
+model_face: ../camera-all-semi-supervised-bfm/outs/output-5k-40-80pc-20e-landmark-background_output-40k-5-80pc-20e-landmark-background/seperate-all-losses-80-pc-20-exp-0.00001-lr-0.25-train-mse-loss-5-cam-params/ffhq-all/supervised/cosine_1/adam-1e-05-ep-6-pllr-1e-06-resnet-frozen-cfov-cpp-cam-params-frozen-round-3/model.pth
+round: 5
+type: test
+eval: false
+save_mesh: false
+shuffle: false
+dataset: genova
